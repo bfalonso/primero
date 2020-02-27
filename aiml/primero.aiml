@@ -11,6 +11,7 @@
 </random></template>
 </category>
 
+<!-- Ejercicio 3 -->
 <category>
 <pattern>Buenos dias ^</pattern>
 <template><srai>Hola *</srai></template>
@@ -85,14 +86,6 @@
 <template>No, <star/> no es un color</template>
 </category>
 
-<!-- Regla 8 -->
-<category>
-<pattern>Cual es la capital de *</pattern>
-<template>
-	La capital de <star/> es <map name="capital"><star/></map>.
-</template>
-</category>
-
 <category>
 <pattern>^ cafe ^</pattern>
 <template>
@@ -108,10 +101,47 @@
 </template>
 </category>
 
+<!-- Regla 8 -->
+<category>
+<pattern>Cual es la capital de *</pattern>
+<template>
+	La capital de <star/> es <map name="capital"><star/></map>.
+</template>
+</category>
+
+<!-- Ejercicio 4 -->
+<category>
+<pattern>Pelo de <set>compi</set></pattern>
+<template>
+	El color de pelo de <star/> es <map name="pelo"><star/></map>.
+</template>
+</category>
+
+<category>
+<pattern>Pelo de *</pattern>
+<template>
+	No conozco a <star/>.
+</template>
+</category>
+
+<category>
+<pattern>Ojos de <set>compi</set></pattern>
+<template>
+	Los ojos de <star/> son <map name="ojos"><star/></map>.
+</template>
+</category>
+
+<category>
+<pattern>Ojos de *</pattern>
+<template>
+	No conozco a <star/>.
+</template>
+</category>
+
 <!-- Regla default -->
 <category>
 <pattern>*</pattern>
-<template>Se me complica la pregunta..</template>
+<template>Me has dejado sin palabras...</template>
 </category>
 
 </aiml>

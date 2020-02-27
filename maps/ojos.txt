@@ -1,0 +1,5 @@
+pepe:azules
+mario:marrones
+antonio:marrones
+raul:verdes
+jose:azules
