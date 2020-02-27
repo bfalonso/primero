@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+
+<!-- Regla 1 -->
+<category>
+<pattern>Hola ^</pattern>
+<template><random>
+	<li>Hola, ¿que tal?</li>
+	<li>Hey, ¿como te va?</li>
+	<li>Buenas, ¿que tal?</li>
+</random></template>
+</category>
+
+<category>
+<pattern>Buenos dias ^</pattern>
+<template><srai>Hola *</srai></template>
+</category>
+
+<category>
+<pattern>Buenas tardes ^</pattern>
+<template><srai>Hola *</srai></template>
+</category>
+
+<category>
+<pattern>^ borde</pattern>
+<template>
+	<think><set name="saludogrosero">^ borde</set></think>
+	Que te he hecho yo para que me hables así?
+</template>
+</category>
+
+<category>
+<pattern>^ tonto</pattern>
+<template><srai><get name="saludogrosero"/></srai></template>
+</category>
+
+<!-- Regla 2 -->
+<category>
+<pattern>^ que tal tu</pattern>
+<template>Estoy genial!</template>
+</category>
+
+<!-- Regla 3 -->
+<category>
+<pattern>^ me llamo *</pattern>
+<template>
+	Vale <set name="nombre"><star index="2"/></set>.
+	<get name="nombre"/> es un bonito nombre.
+</template>
+</category>
+
+<!-- Regla 4 -->
+<category>
+<pattern>Cual es mi nombre</pattern>
+<template>
+	<condition name="nombre">
+		<li value="unknown">Aun no me has dicho tu nombre</li>
+		<li>Tu nombre es <get name="nombre"/></li>
+	</condition>
+</template>
+</category>
+
+<!-- Regla 5 -->
+<category>
+<pattern>Como me llamo</pattern>
+<template><srai>Cual es mi nombre</srai></template>
+</category>
+
+<!-- Regla 6 -->
+<category>
+<pattern>Mi color favorito es el *</pattern>
+<template>
+	<think><set var="color"><star/></set></think>
+	El <get var="color"/> es un color bastante feo.
+</template>
+</category>
+
+<!-- Regla 7 -->
+<category>
+<pattern>Es <set>color</set> un color</pattern>
+<template>Si, <star/> es un color </template>
+</category>
+<category>
+<pattern> Es * un color</pattern>
+<template>No, <star/> no es un color</template>
+</category>
+
+<!-- Regla 8 -->
+<category>
+<pattern>Cual es la capital de *</pattern>
+<template>
+	La capital de <star/> es <map name="capital"><star/></map>.
+</template>
+</category>
+
+<category>
+<pattern>^ cafe ^</pattern>
+<template>
+	Te gusta el cafe
+</template>
+</category>
+
+<category>
+<pattern>Si</pattern>
+<that>Te gusta el cafe</that>
+<template>
+	Lo prefieres solo o con leche
+</template>
+</category>
+
+<!-- Regla default -->
+<category>
+<pattern>*</pattern>
+<template>Se me complica la pregunta..</template>
+</category>
+
+</aiml>
