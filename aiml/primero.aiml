@@ -138,6 +138,14 @@
 </template>
 </category>
 
+<category>
+<pattern>Filtro <set>conjunto</set> ^</pattern>
+<template>
+	<map name="ojosCompi"><star/></map>
+	<srai>Filtro <star index="z"></srai>
+</template>
+</category>
+
 <!-- Regla default -->
 <category>
 <pattern>*</pattern>
