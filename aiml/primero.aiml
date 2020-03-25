@@ -101,14 +101,6 @@
 </template>
 </category>
 
-<!-- Regla 8 -->
-<category>
-<pattern>Cual es la capital de *</pattern>
-<template>
-	La capital de <star/> es <map name="capital"><star/></map>.
-</template>
-</category>
-
 <!-- Ejercicio 4 -->
 <category>
 <pattern>Pelo de <set>compi</set></pattern>
@@ -142,7 +134,55 @@
 <pattern>Filtro <set>conjunto</set> ^</pattern>
 <template>
 	<map name="ojosCompi"><star/></map>
-	<srai>Filtro <star index="z"></srai>
+	<srai>Filtro <star index="z"/></srai>
+</template>
+</category>
+
+<!-- Regla 12 -->
+<category>
+<pattern>Cual es la capital de <set>pais</set></pattern>
+<template>
+	La capital de <star/> es <map name="capital"><star/></map>.
+</template>
+</category>
+
+<!-- Regla 13 -->
+<category>
+<pattern>Cual es la capital de *</pattern>
+<template>No lo se</template>
+</category>
+
+<!-- Ejercicio 6a: Conocimiento-->
+<category>
+<pattern>La capital de * es *</pattern>
+<template>
+	<think>
+		<set var="cap"><srai>Cual es la capital de <star/></srai></set>
+		<set var="usercap"><star index="2"/></set>
+	</think>
+	<condition var="cap">
+		<li value="No lo se">
+			<learn>
+			<category>
+			<pattern>Cual es la capital de <eval><star/></eval></pattern>
+			<template>
+				La capital de <eval><star/></eval> es <eval><star index="2"/></eval>
+			</template>
+			</category>
+			</learn>
+			Recordare que la capital de <star/> es <star index="2"/>.
+		</li>
+		<li>
+			<condition var="usercap">
+				<li><value><map name="capital"><star/></map></value>
+					Ya lo sabia.
+				</li>
+				<li>
+					No estoy de acuerdo.
+				</li>
+			</condition>
+		</li>
+	</condition>
 </template>
 </category>
 
