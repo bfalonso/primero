@@ -112,7 +112,7 @@
 <category>
 <pattern>Pelo de *</pattern>
 <template>
-	No conozco a <star/>.
+	No le conozco
 </template>
 </category>
 
@@ -126,15 +126,7 @@
 <category>
 <pattern>Ojos de *</pattern>
 <template>
-	No conozco a <star/>.
-</template>
-</category>
-
-<category>
-<pattern>Filtro <set>conjunto</set> ^</pattern>
-<template>
-	<map name="ojosCompi"><star/></map>
-	<srai>Filtro <star index="z"/></srai>
+	No le conozco
 </template>
 </category>
 
@@ -152,7 +144,7 @@
 <template>No lo se</template>
 </category>
 
-<!-- Ejercicio 6a: Conocimiento-->
+<!-- Ejercicio 6a: Conocimiento sobre capitales-->
 <category>
 <pattern>La capital de * es *</pattern>
 <template>
@@ -181,6 +173,49 @@
 					No estoy de acuerdo.
 				</li>
 			</condition>
+		</li>
+	</condition>
+</template>
+</category>
+
+<!-- Ejercicio 6b: Conocimiento sobre pelo y ojos -->
+<category>
+<pattern>* tiene los ojos * y el pelo *</pattern>
+<template>
+	<think>
+		<set var="ojos"><srai>Ojos de <star/></srai></set>
+		<set var="pelo"><srai>Pelo de <star/></srai></set>
+	</think>
+	<condition var="ojos">
+		<li value="No le conozco">
+			<learn>
+			<category>
+			<pattern>Ojos de <eval><star/></eval></pattern>
+			<template>
+				Los ojos de <eval><star/></eval> son <eval><star index="2"/></eval>
+			</template>
+			</category>
+			</learn>
+			Recordare que <star/> tiene los ojos <star index="2"/>.
+		</li>
+		<li>
+			Ya conocia el color de ojos de <star/>.
+		</li>
+	</condition>
+	<condition var="pelo">
+		<li value="No le conozco">
+			<learn>
+			<category>
+			<pattern>Pelo de <eval><star/></eval></pattern>
+			<template>
+				El color de pelo de <eval><star/></eval> es <eval><star index="3"/></eval>
+			</template>
+			</category>
+			</learn>
+			Recordare que <star/> tiene el pelo <star index="3"/>.
+		</li>
+		<li>
+			Ya conocia el color de pelo de <star/>.
 		</li>
 	</condition>
 </template>
